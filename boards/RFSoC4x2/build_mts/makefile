@@ -3,6 +3,8 @@
 # SPDX-License-Identifier: MIT
 # ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- --
 
+.PHONY: rebuild_tcl
+
 all: board_files block_design bitstream check_timing handoff
 	@echo
 	@tput setaf 2 ; echo "Built overlays successfully!!"; tput sgr0;
@@ -23,6 +25,14 @@ check_timing:
 
 handoff:
 	vivado -mode batch -source handoff.tcl -notrace -tclargs mts
+
+rebuild_tcl:
+	cd ./rebuild_tcl/ && \
+	vivado -mode batch -source ./rebuild_tcl_from_bd.tcl && \
+	/usr/bin/tclsh ./splice_tcl_files.tcl && \
+	rm ./tmp_tcl_from_bd.tcl && \
+	mv ./mts-MOLLER.tcl ../ && \
+	cd .. 
 
 clean:
 	rm -rf mts *.jou *.log NA .Xil *.xsa *.hwh *.bit
