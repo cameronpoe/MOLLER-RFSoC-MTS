@@ -10,12 +10,20 @@ all: board_files block_design bitstream check_timing handoff
 	@tput setaf 2 ; echo "Built overlays successfully!!"; tput sgr0;
 	@echo
 
+moller: board_files block_design_moller bitstream check_timing handoff
+	@echo
+	@tput setaf 2 ; echo "Built MOLLER overlays successfully!!"; tput sgr0;
+	@echo
+
 board_files:
 	wget "https://www.realdigital.org/downloads/9d2af32116d5420d25da904f6a06bb1f.zip" --no-check-certificate -O bf.zip && \
 	unzip bf.zip -d board_files && rm bf.zip
 
 block_design:
 	vivado -mode batch -source mts.tcl
+
+block_design_moller:
+	vivado -mode batch -source mts-MOLLER.tcl
 
 bitstream:
 	vivado -mode batch -source build_bitstream.tcl -notrace -tclargs mts
