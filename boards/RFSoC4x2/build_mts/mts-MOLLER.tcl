@@ -4363,10 +4363,10 @@ connect_bd_intf_net -intf_net [get_bd_intf_nets deepCapture_M_AXI_S2MM] [get_bd_
   connect_bd_intf_net -intf_net usp_rf_data_converter_1_m01_axis [get_bd_intf_pins hier_fullDec/S_AXIS_DATA1] [get_bd_intf_pins usp_rf_data_converter_1/m01_axis]
   connect_bd_intf_net -intf_net usp_rf_data_converter_1_m02_axis [get_bd_intf_pins hier_fullDec/S_AXIS_DATA2] [get_bd_intf_pins usp_rf_data_converter_1/m02_axis]
   connect_bd_intf_net -intf_net usp_rf_data_converter_1_m03_axis [get_bd_intf_pins hier_fullDec/S_AXIS_DATA3] [get_bd_intf_pins usp_rf_data_converter_1/m03_axis]
-  connect_bd_intf_net -intf_net usp_rf_data_converter_1_m20_axis [get_bd_intf_pins hier_fullDec/S_AXIS_DATA7] [get_bd_intf_pins usp_rf_data_converter_1/m20_axis]
-  connect_bd_intf_net -intf_net usp_rf_data_converter_1_m21_axis [get_bd_intf_pins hier_fullDec/S_AXIS_DATA4] [get_bd_intf_pins usp_rf_data_converter_1/m21_axis]
-  connect_bd_intf_net -intf_net usp_rf_data_converter_1_m22_axis [get_bd_intf_pins hier_fullDec/S_AXIS_DATA5] [get_bd_intf_pins usp_rf_data_converter_1/m22_axis]
-  connect_bd_intf_net -intf_net usp_rf_data_converter_1_m23_axis [get_bd_intf_pins hier_fullDec/S_AXIS_DATA6] [get_bd_intf_pins usp_rf_data_converter_1/m23_axis]
+  connect_bd_intf_net -intf_net usp_rf_data_converter_1_m20_axis [get_bd_intf_pins hier_fullDec/S_AXIS_DATA4] [get_bd_intf_pins usp_rf_data_converter_1/m20_axis]
+  connect_bd_intf_net -intf_net usp_rf_data_converter_1_m21_axis [get_bd_intf_pins hier_fullDec/S_AXIS_DATA5] [get_bd_intf_pins usp_rf_data_converter_1/m21_axis]
+  connect_bd_intf_net -intf_net usp_rf_data_converter_1_m22_axis [get_bd_intf_pins hier_fullDec/S_AXIS_DATA6] [get_bd_intf_pins usp_rf_data_converter_1/m22_axis]
+  connect_bd_intf_net -intf_net usp_rf_data_converter_1_m23_axis [get_bd_intf_pins hier_fullDec/S_AXIS_DATA7] [get_bd_intf_pins usp_rf_data_converter_1/m23_axis]
   connect_bd_intf_net -intf_net usp_rf_data_converter_1_vout00 [get_bd_intf_ports vout00] [get_bd_intf_pins usp_rf_data_converter_1/vout00]
   connect_bd_intf_net -intf_net usp_rf_data_converter_1_vout10 [get_bd_intf_ports vout10] [get_bd_intf_pins usp_rf_data_converter_1/vout10]
   connect_bd_intf_net -intf_net usp_rf_data_converter_1_vout20 [get_bd_intf_ports vout20] [get_bd_intf_pins usp_rf_data_converter_1/vout20]
@@ -4427,7 +4427,6 @@ connect_bd_intf_net -intf_net [get_bd_intf_nets deepCapture_M_AXI_S2MM] [get_bd_
   # Restore current instance
   current_bd_instance $oldCurInst
 
-  validate_bd_design
   save_bd_design
 
   close_bd_design $design_name 
