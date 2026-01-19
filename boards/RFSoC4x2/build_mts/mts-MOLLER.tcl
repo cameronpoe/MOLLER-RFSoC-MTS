@@ -1085,8 +1085,8 @@ proc cr_bd_mts { parentCell } {
     # Create instance: xlconstant_0, and set properties
     set xlconstant_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0 ]
     set_property -dict [ list \
-     CONFIG.CONST_VAL {0xFFFFFF} \
-     CONFIG.CONST_WIDTH {24} \
+     CONFIG.CONST_VAL {0x1FFFFFF} \
+     CONFIG.CONST_WIDTH {25} \
    ] $xlconstant_0
   
     # Create interface connections
@@ -1198,7 +1198,6 @@ proc cr_bd_mts { parentCell } {
     create_hier_cell_hier_singleDec7 $hier_obj hier_singleDec7
   
     # Create interface connections
-    connect_bd_intf_net -intf_net S_AXIS_1 [get_bd_intf_pins M_AXIS0] [get_bd_intf_pins hier_singleDec0/M_AXIS]
     connect_bd_intf_net -intf_net S_AXIS_DATA1_1 [get_bd_intf_pins S_AXIS_DATA1] [get_bd_intf_pins hier_singleDec1/S_AXIS_DATA]
     connect_bd_intf_net -intf_net S_AXIS_DATA2_1 [get_bd_intf_pins S_AXIS_DATA2] [get_bd_intf_pins hier_singleDec2/S_AXIS_DATA]
     connect_bd_intf_net -intf_net S_AXIS_DATA3_1 [get_bd_intf_pins S_AXIS_DATA3] [get_bd_intf_pins hier_singleDec3/S_AXIS_DATA]
@@ -1206,6 +1205,7 @@ proc cr_bd_mts { parentCell } {
     connect_bd_intf_net -intf_net S_AXIS_DATA5_1 [get_bd_intf_pins S_AXIS_DATA5] [get_bd_intf_pins hier_singleDec5/S_AXIS_DATA]
     connect_bd_intf_net -intf_net S_AXIS_DATA6_1 [get_bd_intf_pins S_AXIS_DATA6] [get_bd_intf_pins hier_singleDec6/S_AXIS_DATA]
     connect_bd_intf_net -intf_net S_AXIS_DATA7_1 [get_bd_intf_pins S_AXIS_DATA7] [get_bd_intf_pins hier_singleDec7/S_AXIS_DATA]
+    connect_bd_intf_net -intf_net hier_singleDec0_M_AXIS [get_bd_intf_pins M_AXIS0] [get_bd_intf_pins hier_singleDec0/M_AXIS]
     connect_bd_intf_net -intf_net hier_singleDec1_M_AXIS [get_bd_intf_pins M_AXIS1] [get_bd_intf_pins hier_singleDec1/M_AXIS]
     connect_bd_intf_net -intf_net hier_singleDec2_M_AXIS [get_bd_intf_pins M_AXIS2] [get_bd_intf_pins hier_singleDec2/M_AXIS]
     connect_bd_intf_net -intf_net hier_singleDec3_M_AXIS [get_bd_intf_pins M_AXIS3] [get_bd_intf_pins hier_singleDec3/M_AXIS]
