@@ -60,7 +60,7 @@ module stream_tlaster(
     
     // We will always start when s_axis_tvalid is high and m_axis_tready is high
     wire start;
-    assign start = s_axis_tvalid & m_axis_tready; 
+    assign start = m_axis_tready; 
     
     // RFDC will never have a subset of bytes invalid, so drive all tkeep bits high always
     assign m_axis_tkeep = 2'b11;
@@ -94,6 +94,7 @@ module stream_tlaster(
                     if (valid_count == count-1) begin
                         m_axis_tlast <= 1;
                         state <= WAIT_FOR_TREADY;
+                        //s_axis_tready <= 1'b0;
                     end else begin
                         m_axis_tlast <= 0;
                     end
