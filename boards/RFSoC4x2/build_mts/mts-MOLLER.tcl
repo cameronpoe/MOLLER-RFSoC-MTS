@@ -883,9 +883,9 @@ proc cr_bd_mts { parentCell } {
   # Create instance: util_vector_logic_0, and set properties
   set util_vector_logic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_0 ]
   set_property -dict [ list \
-   CONFIG.C_OPERATION {or} \
+   CONFIG.C_OPERATION {and} \
    CONFIG.C_SIZE {1} \
-   CONFIG.LOGO_FILE {data/sym_orgate.png} \
+   CONFIG.LOGO_FILE {data/sym_andgate.png} \
  ] $util_vector_logic_0
 
   # Create instance: xlconcat_0, and set properties
@@ -897,7 +897,7 @@ proc cr_bd_mts { parentCell } {
   # Create instance: xlconstant_0, and set properties
   set xlconstant_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0 ]
   set_property -dict [ list \
-   CONFIG.CONST_VAL {256} \
+   CONFIG.CONST_VAL {384} \
    CONFIG.CONST_WIDTH {32} \
  ] $xlconstant_0
 
@@ -2515,13 +2515,13 @@ Port;FD4A0000;FD4AFFFF;1|FPD;DPDMA;FD4C0000;FD4CFFFF;1|FPD;DDR_XMPU5_CFG;FD05000
 
   # Create port connections
   connect_bd_net -net BUFG_I_0_1 [get_bd_ports PL_CLK] [get_bd_pins clocktreeMTS/PL_CLK]
-  connect_bd_net -net RFingressReset_peripheral_aresetn [get_bd_pins adc_mux_0/aresetn] [get_bd_pins add_tlast_0/aresetn] [get_bd_pins clocktreeMTS/ingress_aresetn] [get_bd_pins fir_compiler_8chs_0/aresetn] [get_bd_pins usp_rf_data_converter_1/m0_axis_aresetn] [get_bd_pins usp_rf_data_converter_1/m1_axis_aresetn] [get_bd_pins usp_rf_data_converter_1/m2_axis_aresetn] [get_bd_pins usp_rf_data_converter_1/m3_axis_aresetn] [get_bd_pins util_vector_logic_0/Op1]
+  connect_bd_net -net RFingressReset_peripheral_aresetn [get_bd_pins adc_mux_0/aresetn] [get_bd_pins add_tlast_0/aresetn] [get_bd_pins clocktreeMTS/ingress_aresetn] [get_bd_pins fir_compiler_8chs_0/aresetn] [get_bd_pins usp_rf_data_converter_1/m0_axis_aresetn] [get_bd_pins usp_rf_data_converter_1/m1_axis_aresetn] [get_bd_pins usp_rf_data_converter_1/m2_axis_aresetn] [get_bd_pins usp_rf_data_converter_1/m3_axis_aresetn]
   connect_bd_net -net axi_dma_0_s2mm_introut [get_bd_pins axi_dma_0/s2mm_introut] [get_bd_pins xlconcat_0/In0]
   connect_bd_net -net axi_gpio_0_gpio_io_o [get_bd_pins axi_gpio_0/gpio_io_o] [get_bd_pins util_vector_logic_0/Op2]
   connect_bd_net -net clk_wiz_0_clk_out1 [get_bd_pins adc_mux_0/aclk] [get_bd_pins add_tlast_0/aclk] [get_bd_pins axis_data_fifo_0/s_axis_aclk] [get_bd_pins clocktreeMTS/clkRF] [get_bd_pins fir_compiler_8chs_0/aclk] [get_bd_pins usp_rf_data_converter_1/m0_axis_aclk] [get_bd_pins usp_rf_data_converter_1/m1_axis_aclk] [get_bd_pins usp_rf_data_converter_1/m2_axis_aclk] [get_bd_pins usp_rf_data_converter_1/m3_axis_aclk]
   connect_bd_net -net clocktreeMTS_axi_interconnect_aresetn [get_bd_pins clocktreeMTS/axi_interconnect_aresetn] [get_bd_pins smartconnect_0/aresetn] [get_bd_pins smartconnect_2/aresetn]
   connect_bd_net -net clocktreeMTS_interrupt [get_bd_pins clocktreeMTS/interrupt] [get_bd_pins xlconcat_0/In2]
-  connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins axi_dma_0/axi_resetn] [get_bd_pins axi_gpio_0/s_axi_aresetn] [get_bd_pins clocktreeMTS/s_axi_aresetn] [get_bd_pins control_interconnect/ARESETN] [get_bd_pins control_interconnect/M00_ARESETN] [get_bd_pins control_interconnect/M01_ARESETN] [get_bd_pins control_interconnect/M02_ARESETN] [get_bd_pins control_interconnect/M03_ARESETN] [get_bd_pins control_interconnect/S00_ARESETN] [get_bd_pins system_management_wiz_0/s_axi_aresetn] [get_bd_pins usp_rf_data_converter_1/s_axi_aresetn]
+  connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins axi_dma_0/axi_resetn] [get_bd_pins axi_gpio_0/s_axi_aresetn] [get_bd_pins clocktreeMTS/s_axi_aresetn] [get_bd_pins control_interconnect/ARESETN] [get_bd_pins control_interconnect/M00_ARESETN] [get_bd_pins control_interconnect/M01_ARESETN] [get_bd_pins control_interconnect/M02_ARESETN] [get_bd_pins control_interconnect/M03_ARESETN] [get_bd_pins control_interconnect/S00_ARESETN] [get_bd_pins system_management_wiz_0/s_axi_aresetn] [get_bd_pins usp_rf_data_converter_1/s_axi_aresetn] [get_bd_pins util_vector_logic_0/Op1]
   connect_bd_net -net src_in_0_1 [get_bd_ports PL_SYSREF] [get_bd_pins clocktreeMTS/PL_SYSREF]
   connect_bd_net -net synchronizeSYSREF_dest_out [get_bd_pins clocktreeMTS/UserSYSREF] [get_bd_pins usp_rf_data_converter_1/user_sysref_adc]
   connect_bd_net -net system_management_wiz_0_ip2intc_irpt [get_bd_pins system_management_wiz_0/ip2intc_irpt] [get_bd_pins xlconcat_0/In3]
