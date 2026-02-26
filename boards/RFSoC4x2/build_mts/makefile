@@ -42,5 +42,10 @@ rebuild_tcl:
 	mv ./mts-MOLLER.tcl ../ && \
 	cd .. 
 
+rebuild_tcl_new:
+	cd ./mts/ && \
+	vivado -mode batch -source ../rebuild_commands.tcl && \
+	cd ..
+
 clean:
 	rm -rf mts *.jou *.log NA .Xil *.xsa *.hwh *.bit
