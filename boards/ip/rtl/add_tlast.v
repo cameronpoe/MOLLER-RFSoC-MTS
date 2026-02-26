@@ -14,11 +14,11 @@ module add_tlast(
     output reg [63:0] m_axis_tdata,
     output reg m_axis_tvalid, 
     output reg m_axis_tlast, 
-    output [1:0] m_axis_tkeep, 
+    output [7:0] m_axis_tkeep, 
     input m_axis_tready
     );
     
-    assign m_axis_tkeep = 2'b11;
+    assign m_axis_tkeep = 8'b11111111;
     
     // Counts the number of valid words in a packet
     reg [31:0] count = 32'd0;
