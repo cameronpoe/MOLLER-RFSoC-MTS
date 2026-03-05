@@ -47,5 +47,9 @@ rebuild_tcl_new:
 	vivado -mode batch -source ../rebuild_commands.tcl && \
 	cd ..
 
+mvbit:
+	cp ./mts/mts.gen/sources_1/bd/mts/hw_handoff/mts.hwh ./ && \
+	cp ./mts/mts.runs/impl_1/mts_wrapper.bit ./mts.bit
+
 clean:
 	rm -rf mts *.jou *.log NA .Xil *.xsa *.hwh *.bit
