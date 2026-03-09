@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: MIT
 # ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- --
 
-.PHONY: rebuild_tcl
+.PHONY: rebuild_tcl rebuild_tcl_new
 
 all: board_files block_design bitstream check_timing handoff
 	@echo
@@ -35,17 +35,11 @@ handoff:
 	vivado -mode batch -source handoff.tcl -notrace -tclargs mts
 
 rebuild_tcl:
-	cd ./rebuild_tcl/ && \
-	vivado -mode batch -source ./rebuild_tcl_from_bd.tcl && \
-	/usr/bin/tclsh ./splice_tcl_files.tcl && \
-	rm ./tmp_tcl_from_bd.tcl && \
-	mv ./mts-MOLLER.tcl ../ && \
-	cd .. 
-
-rebuild_tcl_new:
 	cd ./mts/ && \
-	vivado -mode batch -source ../rebuild_commands.tcl && \
-	cd ..
+	vivado -mode batch -notrace -source ../rebuild_tcl/write_project_tcl.tcl && \
+	cd .. && \
+	vivado -mode batch -notrace -source ./rebuild_tcl/edit_project_script.tcl && \
+	mv ./mts_MOLLER_edited.tcl ./mts_MOLLER.tcl
 
 mvbit:
 	cp ./mts/mts.gen/sources_1/bd/mts/hw_handoff/mts.hwh ./ && \
