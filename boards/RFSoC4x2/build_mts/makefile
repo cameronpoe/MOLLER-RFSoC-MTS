@@ -42,8 +42,8 @@ rebuild_tcl:
 	mv ./mts_MOLLER_edited.tcl ./mts_MOLLER.tcl
 
 mvbit:
-	cp ./mts/mts.gen/sources_1/bd/mts/hw_handoff/mts.hwh ./ && \
-	cp ./mts/mts.runs/impl_1/mts_wrapper.bit ./mts.bit
+	cp ./mts/mts.gen/sources_1/bd/mts/hw_handoff/mts.hwh ./moller_rfsoc_fw_vX-X-X.hwh && \
+	cp ./mts/mts.runs/impl_1/mts_wrapper.bit ./moller_rfsoc_fw_vX-X-X.bit
 
 clean:
 	rm -rf mts *.jou *.log NA .Xil *.xsa *.hwh *.bit
