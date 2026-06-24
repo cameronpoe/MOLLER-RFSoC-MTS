@@ -12,6 +12,9 @@ module trigger_timestamp(
     input trigger_select,
     input [31:0] num_triggers,
     
+    // debug
+    output wire synced_trig,
+    
     output reg [63:0] m_axis_tdata,
     output reg m_axis_tvalid,
     output reg m_axis_tlast    
@@ -33,6 +36,9 @@ module trigger_timestamp(
         
     wire trigger;
     assign trigger = trigger_select ? trigger_ext_stable : trigger_self;
+    
+    // debug
+    assign synced_trig = trigger;
     
     reg trigger_prev;
     reg [31:0] counter = 32'b0;
