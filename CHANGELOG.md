@@ -14,5 +14,6 @@ Same as `v1.0.1`, but it includes an integrated logic analyzer (ILA) to debug th
 - probe0 [0:0]: the external trigger signal after it goes through the `trigger_timestamp` module's `xpm_cdc_single`, which is a single-bit clock domain crossing logic block. 
 - probe1 [0:0]: the external trigger signal directly from the FPGA pin AH17. 
 - probe2 [0:0]: `trigger_select` bit. 
-- probe3 [31:0]: `num_triggers` word. 
+- probe3 [31:0]: `num_triggers` word.
+  
 The reason for putting this in was a bug that was seen when the waveform generator was on and connected to the RFSoC, but no triggers were registered. It turned out to be a cabling issue, not a firmware issue. 
